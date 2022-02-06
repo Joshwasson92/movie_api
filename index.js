@@ -1,7 +1,11 @@
 const express = require('express'),
     morgan = require('morgan');
+    uuid = require('uuid')
+    bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.json());
 
 let movieList = [
     {
@@ -68,15 +72,21 @@ let movieList = [
 
 app.use(morgan('common',));
 
-
+// GET request for all movies
 app.get('/movies', (req, res) => {
     res.json(movieList);
 });
 
-
+// Get request for homepage
 app.get('/', (req, res) => {
     res.send('Homepage works!');
 });
+
+//GET request to pull up user profile
+app.get('/users', (req, res) => {
+    res.send('User information works!')
+    
+})
 
 app.use (express.static('public'));
 
