@@ -1,22 +1,42 @@
-This API is for a movie database it will have the following functionality which includes information like
- movie genre ,
- name,
- actor, 
- producer,
- image url,
- featured or not,
- year of release,
+This API is for a movie database it will have the following functionality which includes 
+ - Movie Genre 
+ - Title
+ - Actors 
+ - Director
+   - Director Bio
+   - Director Birth and Death year
+ - Image url
+ - Featured or Not Featured
+ - Release Year
+
 
  It will also allow users to do the following.
- register new user,
- allow users to update user information (username),allow users to add a movie to their list,
- allow users to remove movie from their list,
- allowing users to deregister
+ - Register a new user
+ - See all users
+ - Allow users to add and remove movies from their list
+ - Allow a user to delete their account
+ - Allow users to update their information
 
  URL Endpoints
+*** Home ***
+/
 
+*** Movies ***
  /movies  - Returns ALL movies
- /movies/:name - Returns movie when name is searched (not implemented yet)
- /users/:username - Returns users account information
+ /addmovies - Adds a movie
+ /moviesearch - Search by movie name
+ /moviesdelete/:Title - Deletes a movie 
+ /moviesgenre/:genre - Returns genre description
 
 
+ ***Director***
+ /directors brings up all directors.
+ /directors/:director brings up a specific director
+
+** Users ***
+/users - Returns all user accounts or creates a user
+/usersfind/:Username
+/users/:Username - Updates user information
+/usersdelete/:Username - Deletes a user via Username
+/users/:Username/movies/:MovieID - Adds or removes movie to users movie list
+/usersdelete/:Username - Deletes user
