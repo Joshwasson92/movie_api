@@ -9,10 +9,7 @@ const express = require('express'),
     const Users = Models.User;
     const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb+srv://jwasson:9wOlIaxMlxhpfd1R@cluster0.jzjsh.mongodb.net/Cluster0?retryWrites=true&w=majority',{
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-});
+    mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const passport = require('passport');
 // require('./passport');
