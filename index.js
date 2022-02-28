@@ -9,7 +9,7 @@ const express = require('express'),
     const Users = Models.User;
     const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB',{
+mongoose.connect('mongodb+srv://jwasson:9wOlIaxMlxhpfd1R@cluster0.jzjsh.mongodb.net/Cluster0?retryWrites=true&w=majority',{
     useNewUrlParser: true, 
     useUnifiedTopology: true
 });
@@ -152,14 +152,12 @@ app.get('/usersfind/:Username', passport.authenticate('jwt', { session: false })
     check('Email', 'Email does not appear to be valid').isEmail()
   ],
     (req, res) => {
-        
 
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
 };
-        
         let hashedPassword = Users.hashPassword(req.body.Password);
       Users.findOne({ Username: req.body.Username })
         .then((user) => {
@@ -292,4 +290,5 @@ const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
  console.log('Listening on Port ' + port);
 });
+
 
