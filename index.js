@@ -10,12 +10,12 @@ const express = require('express'),
     const Movies = Models.Movie;
     const Users = Models.User;
     const { check, validationResult } = require('express-validator');
-    const port = process.env.PORT || 8080;
-
-    // mongoose.connect( process.env.CONNECTION_URI, { 
-    //     useNewUrlParser: true, 
-    //     useUnifiedTopology: true 
-    // });
+    const port = process.env.PORT || 5000;
+    console.log(process.env);
+    mongoose.connect( process.env.MONGO_URI, { 
+        useNewUrlParser: true, 
+        useUnifiedTopology: true 
+    });
 
 const passport = require('passport');
 // require('./passport');
