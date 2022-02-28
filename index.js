@@ -3,16 +3,19 @@ const express = require('express'),
     uuid = require('uuid');
     const morgan = require('morgan');
     const app = express();
+    require('dotenv').config();
+
     const mongoose = require("mongoose");
     const Models = require('./models.js');
     const Movies = Models.Movie;
     const Users = Models.User;
     const { check, validationResult } = require('express-validator');
+    const port = process.env.PORT || 8080;
 
-    mongoose.connect(process.env.CONNECTION_URI,{
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-});
+    // mongoose.connect( process.env.CONNECTION_URI, { 
+    //     useNewUrlParser: true, 
+    //     useUnifiedTopology: true 
+    // });
 
 const passport = require('passport');
 // require('./passport');
@@ -286,7 +289,7 @@ app.use((err, req, res, next) => {
 });
 
 // Server
-const port = process.env.PORT || 8080;
+
 app.listen(port, '0.0.0.0',() => {
  console.log('Listening on Port ' + port);
 });
