@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!-<![endif]-->
 <html>
   <head>
     <meta charset="utf-8">
@@ -10,7 +10,6 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -18,48 +17,62 @@
     <![endif]-->
     
  
-This API is for a movie database it will have the following functionality which includes 
- - Movie Genre 
- - Title
- - Actors 
- - Director
-   - Director Bio
-   - Director Birth and Death year
- - Image url
- - Featured or Not Featured
- - Release Year
+<p>This API is for a movie database it will have the following functionality which includes </p>
+ <UL>
+   <li> Movie Genre </li> 
+   <li> Title </li>
+   <li> Actors </li> 
+   <li> Director </li>
+   <li> Director Bio </li>
+   <li> Director Birth and Death year </li>
+   <li> Image url </li>
+   <li> Featured or Not Featured </li>
+   <li> Release Year </li> 
+</UL>
+<br>
+ <p>It will also allow users to do the following.</p>
+ <ul>
+ <li> Register a new user </li>
+ <li> See all users </li> 
+ <li> Allow users to add and remove movies from their list </li> 
+ <li> Allow a user to delete their account </li>
+ <li> Allow users to update their information </li>
+ </ul>
+ <p></p>URL Endpoints</p>
+ <br>
+<p>Home</p>
+<ul>
+  <li> / - Brings you to the home page </li>
+</ul>
+<br>
 
- It will also allow users to do the following.
- - Register a new user
- - See all users
- - Allow users to add and remove movies from their list
- - Allow a user to delete their account
- - Allow users to update their information
+<p>Movies</p>
+<ul>
+  <li> /movies  - Returns ALL movies </li>
+  <li> /addmovies - Adds a movie </li>
+  <li> /moviesearch - Search by movie name </li> 
+  <li> /moviesdelete/:Title - Deletes a movie </li>
+ <li>  /moviesgenre/:genre - Returns genre description </li>
+</ul>
 
- URL Endpoints
-*** Home ***
-/
+<br>
 
-*** Movies ***
- /movies  - Returns ALL movies
- /addmovies - Adds a movie
- /moviesearch - Search by movie name
- /moviesdelete/:Title - Deletes a movie 
- /moviesgenre/:genre - Returns genre description
+ <p>Director</p>
+ <ul>
+ <li> /directors brings up all directors. </li>
+ <li> /directors/:director brings up a specific director </li>
+</ul>
+<br>
 
-
- ***Director***
- /directors brings up all directors.
- /directors/:director brings up a specific director
-
-** Users ***
-/users - Returns all user accounts or creates a user
-/usersfind/:Username
-/users/:Username - Updates user information
-/usersdelete/:Username - Deletes a user via Username
-/users/:Username/movies/:MovieID - Adds or removes movie to users movie list
-/usersdelete/:Username - Deletes user
-
+<p>Users</p>
+<ul>
+  <li> /users - Returns all user accounts or creates a user </li>
+  <li> /usersfind/:Username </li> 
+  <li> /users/:Username - Updates user information </li>
+  <li> /usersdelete/:Username - Deletes a user via Username </li>
+  <li> /users/:Username/movies/:MovieID - Adds or removes movie to users movie list </li>
+ <li> /usersdelete/:Username - Deletes user </li>
+</ul>
 <script src="" async defer></script>
 </body>
 </html>
