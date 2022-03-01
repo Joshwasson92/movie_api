@@ -23,11 +23,10 @@ const passport = require('passport');
 const cors = require('cors');
 app.use(cors())
 
-let auth = require('./auth')(app);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(morgan('common'));
+let auth = require('./auth')(app);
 
 // GET request for homepage
 app.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
