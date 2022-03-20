@@ -256,8 +256,8 @@ app.delete('/usersdelete/:Username', passport.authenticate('jwt', { session: fal
     });
 });
 
-  //GET request for all movies  , passport.authenticate('jwt', { session: false }
-app.get('/movies'), (req, res) => {
+  //GET request for all movies
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
       .then((movies) => {
         res.status(201).json(movies);
@@ -266,7 +266,7 @@ app.get('/movies'), (req, res) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
-  };
+  });
 
 //GET request to search a specific movie
 app.get('/moviesearch/:title', passport.authenticate('jwt', { session: false}), (req, res) => {
