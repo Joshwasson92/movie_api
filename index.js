@@ -257,7 +257,7 @@ app.delete('/usersdelete/:Username', passport.authenticate('jwt', { session: fal
 });
 
   //GET request for all movies
-app.get('/movies'), (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
       .then((movies) => {
         res.status(201).json(movies);
@@ -266,20 +266,32 @@ app.get('/movies'), (req, res) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
-  };
+  });
 
 //GET request to search a specific movie
-app.get('/moviesearch/:title', passport.authenticate('jwt', { session: false}), (req, res) => {
-    Movies.findOne({ Title: req.params.title })
-    .then((movies) => {
-        res.json(movies);
+// app.get('/moviesearch/:title', passport.authenticate('jwt', { session: false}), (req, res) => {
+//     Movies.findOne({ Title: req.params.title })
+//     .then((movies) => {
+//         res.json(movies);
         
-    })
-    .catch((err) => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-    });
-});
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//         res.status(500).send('Error: ' + err);
+//     });
+// });
+
+
+app.get("/movies", function (req, res) {
+    Movies.find()
+      .then(function (movies) {
+        res.status(201).json(movies);
+      })
+      .catch(function (error) {
+        console.error(error);
+        res.status(500).send("Error: " + error);
+      });
+  });
 
 app.use (express.static('public'));
 app.use((err, req, res, next) => {
