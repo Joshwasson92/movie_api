@@ -29,7 +29,7 @@ app.use(morgan('common'));
 let auth = require('./auth')(app);
 
 // GET request for homepage
-app.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/', passport.authenticate, (req, res) => {
     res.send('Welcome to the Flix Libray!');
 });
 
