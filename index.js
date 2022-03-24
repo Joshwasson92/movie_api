@@ -20,7 +20,7 @@ const express = require('express'),
 const passport = require('passport');
 // require('./passport');
 
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
+let allowedOrigins = ['http://localhost:8080', 'https://jwmovieapi.herokuapp.com/' , 'http://localhost:1234'];
 
 const cors = require('cors');
 app.use(cors({
