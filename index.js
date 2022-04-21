@@ -295,6 +295,23 @@ app.post(
   }
 );
 
+//GET request to view favorite movies of a users list
+
+app.get(
+  "/:Username/movies",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Users.findOne({ FavoriteMovies: req.params.FavoriteMovies })
+      .then((user) => {
+        res.status(201).json(user);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
+
 //DELETE request to delete movie from users list
 app.delete(
   "/users/:Username/movies/:MovieID",
