@@ -1,41 +1,43 @@
-This API is for a movie database it will have the following functionality which includes 
- - Movie Genre 
- - Title
- - Actors 
- - Director
-   - Director Bio
-   - Director Birth and Death year
- - Image url
- - Featured or Not Featured
- - Release Year
+This API is for a movie database it will have the following functionality which includes
 
- It will also allow users to do the following.
- - Register a new user
- - See all users
- - Allow users to add and remove movies from their list
- - Allow a user to delete their account
- - Allow users to update their information
+- Movie Genre
+- Title
+- Actors
+- Director
+  - Director Bio
+  - Director Birth and Death year
+- Image url
+- Featured or Not Featured
+- Release Year
 
- URL Endpoints
-*** Home ***
+It will also allow users to do the following.
+
+- Register a new user
+- See all users
+- Allow users to add and remove movies from their list
+- Allow a user to delete their account
+- Allow users to update their information
+
+URL Endpoints
+**_ Home _**
 /
 
-*** Movies ***
- /movies  - Returns ALL movies
- /addmovies - Adds a movie
- /moviesearch - Search by movie name
- /moviesdelete/:Title - Deletes a movie 
- /moviesgenre/:genre - Returns genre description
+**_ Movies _**
+/movies - Returns ALL movies
+/addmovies - Adds a movie
+/moviesearch - Search by movie name
+/moviesdelete/:Title - Deletes a movie
+/moviesgenre/:genre - Returns genre description
 
+**_Director_**
+/directors brings up all directors.
+/directors/:director brings up a specific director
 
- ***Director***
- /directors brings up all directors.
- /directors/:director brings up a specific director
-
-** Users ***
+** Users \***
 /users - Returns all user accounts or creates a user
-/usersfind/:Username
+/usersfind/:Username - get request for username
 /users/:Username - Updates user information
 /usersdelete/:Username - Deletes a user via Username
 /users/:Username/movies/:MovieID - Adds or removes movie to users movie list
 /usersdelete/:Username - Deletes user
+/:Username/movies - Get request to retrieve favorite movie list
