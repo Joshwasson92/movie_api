@@ -41,7 +41,7 @@ let allowedOrigins = [
   "http://localhost:8080",
   "https://jwmovieapi.herokuapp.com/",
   "http://localhost:1234",
-  "http://localhost:4200/",
+  "http://localhost:4200",
 ];
 
 app.use(bodyParser.json());
