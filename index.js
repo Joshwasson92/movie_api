@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 const cors = require("cors");
+// old dynamic
 // app.use(
 //   cors({
 //     origin: (origin, callback) => {
@@ -34,44 +35,46 @@ const cors = require("cors");
 //   })
 // );
 
-app.options(
-  "*",
-  cors(function (req, callback) {
-    var corsOptions;
-    if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
-      corsOptions = {
-        origin: "*",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
-        allowedHeaders: "Content-Type,Authorization",
-      };
-    } else {
-      corsOptions = { origin: false };
-    }
-    callback(null, corsOptions);
-    console.log("cors has been reached" + corsOptions);
-  })
-);
+// app.options(
+//   "*",
+//   cors(function (req, callback) {
+//     var corsOptions;
+//     if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
+//       corsOptions = {
+//         origin: "*",
+//         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//         preflightContinue: false,
+//         optionsSuccessStatus: 204,
+//         allowedHeaders: "Content-Type,Authorization",
+//       };
+//     } else {
+//       corsOptions = { origin: false };
+//     }
+//     callback(null, corsOptions);
+//     console.log("cors has been reached" + corsOptions);
+//   })
+// );
 
-app.use(
-  cors(function (req, callback) {
-    var corsOptions;
-    if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
-      corsOptions = {
-        origin: "*",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
-        allowedHeaders: "Content-Type,Authorization",
-      };
-    } else {
-      corsOptions = { origin: false };
-    }
-    callback(null, corsOptions);
-    console.log("cors has been reached" + corsOptions);
-  })
-);
+// app.use(
+//   cors(function (req, callback) {
+//     var corsOptions;
+//     if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
+//       corsOptions = {
+//         origin: "*",
+//         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//         preflightContinue: false,
+//         optionsSuccessStatus: 204,
+//         allowedHeaders: "Content-Type,Authorization",
+//       };
+//     } else {
+//       corsOptions = { origin: false };
+//     }
+//     callback(null, corsOptions);
+//     console.log("cors has been reached" + corsOptions);
+//   })
+// );
+
+app.use(cors());
 
 const passport = require("passport");
 // require('./passport');
