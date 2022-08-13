@@ -18,26 +18,41 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 const cors = require("cors");
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin) return callback(null, true);
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//         // If a specific origin isn’t found on the list of allowed origins
+//         let message =
+//           "The CORS policy for this application doesn't allow access from origin" +
+//           origin;
+//         return callback(new Error(message), false);
+//       }
+//       return callback(null, true);
+//     },
+//   })
+// );
+
 app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        // If a specific origin isn’t found on the list of allowed origins
-        let message =
-          "The CORS policy for this application doesn't allow access from origin" +
-          origin;
-        return callback(new Error(message), false);
-      }
-      return callback(null, true);
-    },
+  cors(function (req, callback) {
+    var corsOptions;
+    if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
+      corsOptions = {
+        origin: true,
+        allowedHeaders: "Content-type,Authorization",
+      };
+    } else {
+      corsOptions = { origin: false };
+    }
+    callback(null, corsOptions);
   })
 );
 
 const passport = require("passport");
 // require('./passport');
 
-let allowedOrigins = [
+const allowedOrigins = [
   "http://localhost:8080",
   "https://jwmovieapi.herokuapp.com/",
   "http://localhost:1234",
