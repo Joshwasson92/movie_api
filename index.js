@@ -40,7 +40,7 @@ app.use(
     if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
       corsOptions = {
         origin: true,
-        allowedHeaders: "Content-type,Authorization",
+        allowedHeaders: "Content-Type,Authorization",
       };
     } else {
       corsOptions = { origin: false };
