@@ -46,6 +46,7 @@ app.use(
       corsOptions = { origin: false };
     }
     callback(null, corsOptions);
+    console.log("cors has been reached" + corsOptions);
   })
 );
 
