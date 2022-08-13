@@ -40,6 +40,9 @@ app.use(
     if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
       corsOptions = {
         origin: "*",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        preflightContinue: false,
+        optionsSuccessStatus: 204,
         allowedHeaders: "Content-Type,Authorization",
       };
     } else {
