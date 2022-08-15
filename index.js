@@ -78,6 +78,7 @@ const passport = require("passport");
 // require('./passport');
 
 const allowedOrigins = [
+  "https://joshwasson92.github.io/myFlixAngular/",
   "http://localhost:8080",
   "https://jwmovieapi.herokuapp.com/",
   "http://localhost:1234",
