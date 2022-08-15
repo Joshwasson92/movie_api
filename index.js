@@ -18,30 +18,22 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 const cors = require("cors");
-// // old dynamic
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (!origin) return callback(null, true);
-//       if (allowedOrigins.indexOf(origin) === -1) {
-//         // If a specific origin isn’t found on the list of allowed origins
-//         let message =
-//           "The CORS policy for this application doesn't allow access from origin" +
-//           origin;
-//         return callback(new Error(message), false);
-//       }
-//       return callback(null, true);
-//     },
-//   })
-// );
-
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
+// old dynamic
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        // If a specific origin isn’t found on the list of allowed origins
+        let message =
+          "The CORS policy for this application doesn't allow access from origin" +
+          origin;
+        return callback(new Error(message), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 // app.options(
 //   "*",
@@ -87,6 +79,7 @@ const passport = require("passport");
 
 const allowedOrigins = [
   "https://joshwasson92.github.io/myFlixAngular/",
+
   "http://localhost:8080",
   "https://jwmovieapi.herokuapp.com/",
   "http://localhost:1234",
