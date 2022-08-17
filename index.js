@@ -37,45 +37,6 @@ const cors = require("cors");
 
 app.use(cors());
 
-// app.options(
-//   "*",
-//   cors(function (req, callback) {
-//     var corsOptions;
-//     if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
-//       corsOptions = {
-//         origin: "*",
-//         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//         preflightContinue: false,
-//         optionsSuccessStatus: 204,
-//         allowedHeaders: "Content-Type,Authorization",
-//       };
-//     } else {
-//       corsOptions = { origin: false };
-//     }
-//     callback(null, corsOptions);
-//     console.log("cors has been reached" + corsOptions);
-//   })
-// );
-
-// app.use(
-//   cors(function (req, callback) {
-//     var corsOptions;
-//     if (allowedOrigins.indexOf(req.header("Origin")) == -1) {
-//       corsOptions = {
-//         origin: "*",
-//         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//         preflightContinue: false,
-//         optionsSuccessStatus: 204,
-//         allowedHeaders: "Content-Type,Authorization",
-//       };
-//     } else {
-//       corsOptions = { origin: false };
-//     }
-//     callback(null, corsOptions);
-//     console.log("cors has been reached" + corsOptions);
-//   })
-// );
-
 const passport = require("passport");
 // require('./passport');
 
@@ -93,12 +54,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("common"));
 let auth = require("./auth")(app);
 
-// GET request for homepage
+/**GET request for homepage */
 app.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
   res.send("Welcome to the Flix Libray!");
 });
 
-//POST request to add movie
+/**POST request to add movie */
 app.post(
   "/addmovies",
   passport.authenticate("jwt", { session: false }),
@@ -136,7 +97,7 @@ app.post(
   }
 );
 
-//DELETE request by movie title
+/**DELETE request by movie title */
 app.delete(
   "/moviesdelete/:Title",
   passport.authenticate("jwt", { session: false }),
@@ -156,7 +117,7 @@ app.delete(
   }
 );
 
-//GET Genre information
+/**GET Genre information */
 app.get(
   "/moviesgenre/:genre",
   passport.authenticate("jwt", { session: false }),
@@ -172,7 +133,7 @@ app.get(
   }
 );
 
-//GET Director information.
+/**GET Director information. */
 app.get(
   "/findbydirectorname/:director",
   passport.authenticate("jwt", { session: false }),
@@ -189,7 +150,7 @@ app.get(
   }
 );
 
-//GET ALL Directors
+/**GET ALL Directors */
 app.get(
   "/directors",
   passport.authenticate("jwt", { session: false }),
@@ -207,7 +168,7 @@ app.get(
   }
 );
 
-//GET request to pull  all users
+/**GET request to pull  all users */
 app.get(
   "/users",
   passport.authenticate("jwt", { session: false }),
@@ -223,7 +184,7 @@ app.get(
   }
 );
 
-// GET request user by username
+/**GET request user by username */
 app.get(
   "/usersfind/:Username",
   passport.authenticate("jwt", { session: false }),
@@ -240,7 +201,7 @@ app.get(
   }
 );
 
-//POST request to create a user
+/** POST request to create a user */
 app.post(
   "/users",
   [
@@ -286,7 +247,7 @@ app.post(
   }
 );
 
-//PUT request to update a users information
+/**PUT request to update a users information */
 app.put(
   "/users/:Username",
   passport.authenticate("jwt", { session: false }),
@@ -304,7 +265,7 @@ app.put(
           Birthday: req.body.Birthday,
         },
       },
-      { new: true }, //This confirms updated document returned
+      { new: true } /**This confirms updated document returned */,
       (err, updatedUser) => {
         if (err) {
           console.error(err);
@@ -317,7 +278,7 @@ app.put(
   }
 );
 
-//POST request to add movie to users list
+/**POST request to add movie to users list */
 app.post(
   "/users/:Username/movies/:MovieID",
   passport.authenticate("jwt", { session: false }),
@@ -340,7 +301,7 @@ app.post(
   }
 );
 
-//GET request to view favorite movies of a users list
+/**GET request to view favorite movies of a users list */
 
 app.get(
   "/:Username/movies",
@@ -357,7 +318,7 @@ app.get(
   }
 );
 
-//DELETE request to delete movie from users list
+/**DELETE request to delete movie from users list */
 app.delete(
   "/users/:Username/movies/:MovieID",
   passport.authenticate("jwt", { session: false }),
@@ -380,7 +341,7 @@ app.delete(
   }
 );
 
-//DELETE a user by username
+/**DELETE request to delete movie from users list */
 app.delete(
   "/usersdelete/:Username",
   passport.authenticate("jwt", { session: false }),
@@ -400,7 +361,7 @@ app.delete(
   }
 );
 
-//GET request for all movies
+/**GET request for all movies */
 app.get(
   "/movies",
   passport.authenticate("jwt", { session: false }),
@@ -422,7 +383,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something is broken");
 });
 
-//GET request to search a specific movie
+/**GET request to search a specific movie */
 app.get(
   "/moviesearch/:title",
   passport.authenticate("jwt", { session: false }),
@@ -438,7 +399,7 @@ app.get(
   }
 );
 
-// Server
+/**Server */
 
 app.listen(port, "0.0.0.0", () => {
   console.log("Listening on Port " + port);
